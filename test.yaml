@@ -1,0 +1,15 @@
+name: Test Credentials
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-credentials:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Google Cloud credentials
+        run: gcloud auth list
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
